@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 
+import { CustomHeader } from '../shared/components/CustomHeader';
 import { theme } from '../shared/themes/Theme';
 import "./../global.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout() {
   return (
     <Stack
       screenOptions={{
+        header: CustomHeader,
         headerTintColor: theme.colors.text,
         contentStyle: {
           backgroundColor: theme.colors.background,
