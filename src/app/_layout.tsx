@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Slot, SplashScreen } from 'expo-router';
+import { Slot, SplashScreen, Stack, Tabs } from 'expo-router';
 import { useFonts } from 'expo-font';
 
 
@@ -22,6 +22,15 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <Slot />
+    <Stack>
+      <Stack.Screen
+        name='(tabs)'
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name='MatchDetail'
+      />
+    </Stack>
   );
 }
