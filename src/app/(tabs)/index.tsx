@@ -8,7 +8,7 @@ export default function Index() {
   const router = useRouter();
 
   return (
-    <View className='flex-1 mt-6'>
+    <View className='flex-1 px-2'>
       <View className='items-center'>
         <Contained
           text='Nova partida'

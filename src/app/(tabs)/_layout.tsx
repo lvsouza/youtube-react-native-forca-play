@@ -23,6 +23,7 @@ export default function Layout() {
         <TabList
           style={{
             gap: 16,
+            marginBottom: 24,
             paddingVertical: 8,
             paddingHorizontal: 16,
             marginHorizontal: 'auto',
@@ -41,7 +42,6 @@ export default function Layout() {
             />
           </TabTrigger>
         </TabList>
-
 
         <TabSlot />
       </Tabs>
