@@ -7,11 +7,11 @@ export default function Index() {
 
   return (
     <View className='items-center justify-center flex-1 '>
-      <Text className='text-xs'>Home</Text>
+      <Text className='font-regular text-text'>Home</Text>
 
       <TouchableOpacity onPress={() => router.push('/matches/MatchDetail')}>
         <Text
-          className="text-xl font-bold"
+          className="text-xl font-bold text-text"
         >Go to Detail</Text>
       </TouchableOpacity>
     </View>
