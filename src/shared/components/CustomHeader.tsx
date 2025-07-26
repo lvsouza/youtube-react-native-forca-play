@@ -2,6 +2,7 @@ import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+
 import { theme } from '../themes/Theme';
 
 

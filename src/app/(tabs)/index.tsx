@@ -1,22 +1,444 @@
 import { useRouter } from 'expo-router';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Alert, View } from 'react-native';
+
 import { Contained } from '../../shared/components/custom-buttons/Contained';
-import { Outlined } from '../../shared/components/custom-buttons/Outlined';
+import { MatchListItem } from '../../shared/components/home/MatchListItem';
+import { Section } from '../../shared/components/Section';
+import { Card } from '../../shared/components/Card';
 
 
 export default function Index() {
   const router = useRouter();
 
   return (
-    <View className='flex-1 px-2'>
+    <View className='flex-1 px-2 gap-6'>
       <View className='items-center'>
         <Contained
           text='Nova partida'
         />
-        <Outlined
-          text='Voltar'
-        />
       </View>
+
+
+      <Section title="Partidas em andamento">
+        <Card>
+          <MatchListItem
+            mode='classic'
+            currentRound={2}
+            status='ongoing'
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Histórico de partidas">
+        <Card>
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='win'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='lose'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+          <MatchListItem
+            divider
+            status='draw'
+            mode='classic'
+            currentRound={2}
+            numberOfRounds={3}
+            onPress={() => Alert.alert('Clicado')}
+          />
+        </Card>
+      </Section>
+
     </View>
   );
 }
