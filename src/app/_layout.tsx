@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import { Slot, SplashScreen, Stack, Tabs } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
+
+import "./../global.css";
 
 
 SplashScreen.preventAutoHideAsync();
@@ -29,7 +31,8 @@ export default function RootLayout() {
       />
 
       <Stack.Screen
-        name='MatchDetail'
+        name='matches/MatchDetail'
+        options={{ title: 'Detalhes' }}
       />
     </Stack>
   );

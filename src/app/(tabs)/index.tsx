@@ -11,7 +11,9 @@ export default function Index() {
 
 
       <TouchableOpacity onPress={() => router.push('/matches/MatchDetail')}>
-        <Text style={{ fontFamily: 'PoppinsBold' }}>Go to Detail</Text>
+        <Text
+          className="text-xl font-bold text-blue-500"
+        >Go to Detail</Text>
       </TouchableOpacity>
     </View>
   );
