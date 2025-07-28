@@ -38,7 +38,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -46,7 +46,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -54,7 +54,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -62,14 +62,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -77,7 +77,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -85,7 +85,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -93,14 +93,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -108,7 +108,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -116,7 +116,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -124,14 +124,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -139,7 +139,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -147,7 +147,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -155,14 +155,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -170,7 +170,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -178,7 +178,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -186,14 +186,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -201,7 +201,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -209,7 +209,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -217,14 +217,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -232,7 +232,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -240,7 +240,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -248,14 +248,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -263,7 +263,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -271,7 +271,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -279,14 +279,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -294,7 +294,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -302,7 +302,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -310,14 +310,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -325,7 +325,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -333,7 +333,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -341,14 +341,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -356,7 +356,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -364,7 +364,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -372,14 +372,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -387,7 +387,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -395,7 +395,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -403,14 +403,14 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             status='lose'
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -418,7 +418,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -426,7 +426,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
           <MatchListItem
             divider
@@ -434,7 +434,7 @@ export default function Index() {
             mode='classic'
             currentRound={2}
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchDetail')}
           />
         </Card>
       </Section>

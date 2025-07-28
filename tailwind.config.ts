@@ -27,6 +27,7 @@ export default {
       },
       fontFamily: {
         bold: theme.fonts.family.bold,
+        italic: theme.fonts.family.italic,
         regular: theme.fonts.family.regular,
       },
       fontSize: {
