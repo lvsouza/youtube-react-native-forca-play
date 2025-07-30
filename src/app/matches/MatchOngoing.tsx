@@ -1,6 +1,8 @@
 import { Image, ScrollView, Text, View } from 'react-native';
-import { ForcaImages } from '../../shared/assets';
+
 import { Outlined } from '../../shared/components/custom-buttons/Outlined';
+import { Keyboard } from '../../shared/components/match-ongoing/Keyboard';
+import { ForcaImages } from '../../shared/assets';
 
 
 export default function MatchOngoing() {
@@ -32,11 +34,16 @@ export default function MatchOngoing() {
           ))}
         </View>
 
+        <Keyboard
+          onSelect={letter => console.log(letter)}
+          wrongWords={['e', 'a']}
+          correctWords={['j', 'o']}
+        />
+
         <Outlined
           color='error'
           text='Desistir da partida'
         />
-
       </View>
     </ScrollView>
   );
