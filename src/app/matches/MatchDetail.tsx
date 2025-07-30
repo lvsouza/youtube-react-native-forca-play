@@ -1,15 +1,14 @@
 import { Text, View } from 'react-native';
+
+import { RoundListItem } from '../../shared/components/RoundListItem';
 import { Section } from '../../shared/components/Section';
 import { Card } from '../../shared/components/Card';
-import { RoundListItem } from '../../shared/components/RoundListItem';
 
 
 export default function MatchDetail() {
 
   return (
     <View className='flex-1 p-2 gap-2'>
-
-
       <Section title='Modo clássico'>
         <Text>Detalhe</Text>
       </Section>
@@ -41,7 +40,6 @@ export default function MatchDetail() {
           />
         </Card>
       </Section>
-
     </View>
   );
 }
