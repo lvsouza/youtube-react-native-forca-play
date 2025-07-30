@@ -15,12 +15,17 @@ export const Contained = ({ text, color, onPress }: TContainedProps) => {
   return (
     <Pressable
       onPress={onPress}
-      className='px-4 py-3 rounded-sm'
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
+      className='px-4 py-3 rounded-sm border-4'
       style={{
         opacity: pressed ? 0.5 : 1,
         backgroundColor: color === 'primary'
+          ? theme.colors.primary
+          : color === 'error'
+            ? theme.colors.wrong
+            : theme.colors.primary,
+        borderColor: color === 'primary'
           ? theme.colors.primary
           : color === 'error'
             ? theme.colors.wrong

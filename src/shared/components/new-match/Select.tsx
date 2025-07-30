@@ -3,6 +3,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import SelectDropdown from 'react-native-select-dropdown'
 
 import { theme } from '../../themes/Theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 type TSelectProps = {
@@ -14,6 +15,9 @@ type TSelectProps = {
   onGetSelected: (value: string | number | null, item: any) => any;
 }
 export const Select = ({ data, label, onSelect, value, onGetSelected, onGetItemLabel }: TSelectProps) => {
+  const insets = useSafeAreaInsets();
+
+
   return (
     <View className='gap-1'>
       <Text className='font-bold text-text text-sm'>
@@ -27,7 +31,7 @@ export const Select = ({ data, label, onSelect, value, onGetSelected, onGetItemL
         defaultValue={data.find(item => onGetSelected(value, item))}
         dropdownStyle={{
           padding: 8,
-          marginTop: -24,
+          marginTop: -insets.bottom,
           borderRadius: theme.corner.small,
           backgroundColor: theme.colors.paper,
         }}
