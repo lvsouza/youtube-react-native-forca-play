@@ -15,6 +15,7 @@ export default function Index() {
       <View className='items-center'>
         <Contained
           text='Nova partida'
+          onPress={() => router.push('/matches/NewMatch')}
         />
       </View>
 
@@ -26,7 +27,7 @@ export default function Index() {
             currentRound={2}
             status='ongoing'
             numberOfRounds={3}
-            onPress={() => Alert.alert('Clicado')}
+            onPress={() => router.push('/matches/MatchOngoing')}
           />
         </Card>
       </Section>

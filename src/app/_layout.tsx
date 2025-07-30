@@ -52,6 +52,22 @@ export default function RootLayout() {
         name='matches/MatchDetail'
         options={{ title: 'Detalhes' }}
       />
+      <Stack.Screen
+        name='matches/NewMatch'
+        options={{ title: 'Nova partida' }}
+      />
+      <Stack.Screen
+        name='matches/MatchOngoing'
+        options={{ title: 'Partida em andamento' }}
+      />
+      <Stack.Screen
+        name='matches/NewRound'
+        options={{ title: 'Nova rodada' }}
+      />
+      <Stack.Screen
+        name='matches/MatchEnded'
+        options={{ title: 'Partida encerrada' }}
+      />
     </Stack>
   );
 }
