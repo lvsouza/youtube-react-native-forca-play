@@ -27,7 +27,7 @@ export default function Index() {
             currentRound={2}
             status='ongoing'
             numberOfRounds={3}
-            onPress={() => router.push('/matches/MatchOngoing')}
+            onPress={() => router.push('/matches/NewRound')}
           />
         </Card>
       </Section>
