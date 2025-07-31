@@ -1,15 +1,28 @@
 import { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import * as Crypto from 'expo-crypto';
 
-import { Select } from '../../shared/components/new-match/Select';
-import { Outlined } from '../../shared/components/custom-buttons/Outlined';
 import { Contained } from '../../shared/components/custom-buttons/Contained';
+import { Outlined } from '../../shared/components/custom-buttons/Outlined';
+import { Select } from '../../shared/components/new-match/Select';
 
 
 export default function NewMatch() {
+  const router = useRouter()
+
   const [timeForEachRound, setTimeForEachRound] = useState(3);
   const [numberOfRounds, setNumberOfROunds] = useState(3);
   const [difficulty, setDifficulty] = useState('medium');
+
+
+  const handleBack = () => {
+    router.dismissAll();
+  }
+
+  const handleCreateMatch = () => {
+    console.log(Crypto.randomUUID());
+  }
 
 
   return (
@@ -66,9 +79,11 @@ export default function NewMatch() {
         <View className='flex-row gap-6 items-center justify-center'>
           <Outlined
             text='Voltar'
+            onPress={handleBack}
           />
           <Contained
             text='Começar'
+            onPress={handleCreateMatch}
           />
         </View>
       </View>
