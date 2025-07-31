@@ -4,23 +4,26 @@ import { theme } from '../../themes/Theme';
 
 
 type TKeyboardProps = {
-  wrongWords: string[];
-  correctWords: string[];
+  disabled: boolean;
+  wrongGuesses: string[];
+  correctGuesses: string[];
   onSelect(letter: string): void;
 }
-export const Keyboard = ({ correctWords, onSelect, wrongWords }: TKeyboardProps) => {
+export const Keyboard = ({ correctGuesses, onSelect, wrongGuesses, disabled }: TKeyboardProps) => {
   return (
     <View className='gap-2 items-center'>
       <View className='flex-row gap-1'>
         {['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'].map((letter) => (
           <TouchableOpacity
             key={letter}
+            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
             style={{
-              backgroundColor: correctWords.includes(letter)
+              opacity: disabled ? 0.5 : undefined,
+              backgroundColor: correctGuesses.includes(letter)
                 ? theme.colors.correct
-                : wrongWords.includes(letter)
+                : wrongGuesses.includes(letter)
                   ? theme.colors.wrong
                   : theme.colors.paper
             }}
@@ -35,12 +38,14 @@ export const Keyboard = ({ correctWords, onSelect, wrongWords }: TKeyboardProps)
         {['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'].map((letter) => (
           <TouchableOpacity
             key={letter}
+            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
             style={{
-              backgroundColor: correctWords.includes(letter)
+              opacity: disabled ? 0.5 : undefined,
+              backgroundColor: correctGuesses.includes(letter)
                 ? theme.colors.correct
-                : wrongWords.includes(letter)
+                : wrongGuesses.includes(letter)
                   ? theme.colors.wrong
                   : theme.colors.paper
             }}
@@ -55,12 +60,14 @@ export const Keyboard = ({ correctWords, onSelect, wrongWords }: TKeyboardProps)
         {['z', 'x', 'c', 'v', 'b', 'n', 'm'].map((letter) => (
           <TouchableOpacity
             key={letter}
+            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
             style={{
-              backgroundColor: correctWords.includes(letter)
+              opacity: disabled ? 0.5 : undefined,
+              backgroundColor: correctGuesses.includes(letter)
                 ? theme.colors.correct
-                : wrongWords.includes(letter)
+                : wrongGuesses.includes(letter)
                   ? theme.colors.wrong
                   : theme.colors.paper
             }}

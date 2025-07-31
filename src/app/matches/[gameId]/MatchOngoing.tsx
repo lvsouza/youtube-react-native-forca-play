@@ -1,14 +1,77 @@
-import { Image, ScrollView, Text, View } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Alert, Image, ScrollView, Text, View } from 'react-native';
 
+import { StorageMatchHistory } from '../../../shared/services/StorageMatchHistory';
 import { Outlined } from '../../../shared/components/custom-buttons/Outlined';
+import { IMatch, StorageMatch } from '../../../shared/services/StorageMatch';
 import { Keyboard } from '../../../shared/components/match-ongoing/Keyboard';
 import { ForcaImages } from '../../../shared/assets';
 
 
 export default function MatchOngoing() {
-  const maskedWord = ['J', 'O', '_', 'O'];
-  const tip = 'Algo para se divertir';
+  const { gameId } = useLocalSearchParams();
+  const router = useRouter();
 
+
+  const [desisting, setDesisting] = useState(false);
+  const [match, setMatch] = useState<IMatch>();
+
+
+  useEffect(() => {
+    if (!gameId || Array.isArray(gameId)) return;
+
+    StorageMatch
+      .getById(gameId)
+      .then(match => {
+        if (!match) return;
+        setMatch(match);
+      });
+  }, [gameId]);
+
+
+  const currentRoundData = useMemo(() => {
+    return match?.rounds.find(round => round.round === match.currentRound);
+  }, [match?.currentRound, match?.rounds]);
+
+
+  const handleDesist = () => {
+    if (!match) return;
+
+    const doDesist = async () => {
+      setDesisting(true);
+
+      await StorageMatch.update({ ...match, status: 'lose' });
+      await StorageMatchHistory.update({
+        id: match.id,
+        status: 'lose',
+        mode: match.mode,
+        numberOfRounds: match.numberOfRounds,
+      });
+
+      setDesisting(false);
+
+      router.replace(`/matches/${match.id}/MatchEnded`);
+    }
+
+    Alert.alert(
+      'Desistir da partida?',
+      'Se desistir o status da partida ficará como "Derrota". Continuar?',
+      [
+        { text: 'Cancelar', isPreferred: true, style: 'cancel' },
+        { text: 'Desistir agora', onPress: doDesist, style: 'destructive' },
+      ],
+    );
+  }
+
+
+  if (!match || !currentRoundData) return (
+    <View className='items-center justify-center flex-1'>
+      <Text className='text-text font-regular text-lg'>
+        Carregando...
+      </Text>
+    </View>
+  );
 
   return (
     <ScrollView className='flex-1 p-2 pt-6'>
@@ -16,16 +79,16 @@ export default function MatchOngoing() {
 
 
         <Text className='text-text font-regular text-xl underline'>
-          {tip}
+          {currentRoundData.tip}
         </Text>
 
         <Image
           className='w-60 h-60'
-          source={ForcaImages[7]}
+          source={ForcaImages[(currentRoundData.wrongGuesses.length + 1) as 1]}
         />
 
         <View className='flex-row flex-wrap gap-2 items-center justify-center'>
-          {maskedWord.map((letter, index) => (
+          {currentRoundData.maskedWord.map((letter, index) => (
             <View key={index} className='border-b-4 border-text h-9 w-9'>
               <Text className='text-text font-bold text-2xl text-center'>
                 {letter === '_' ? '' : letter}
@@ -35,13 +98,16 @@ export default function MatchOngoing() {
         </View>
 
         <Keyboard
+          disabled={desisting}
           onSelect={letter => console.log(letter)}
-          wrongWords={['e', 'a']}
-          correctWords={['j', 'o']}
+          wrongGuesses={currentRoundData.wrongGuesses}
+          correctGuesses={currentRoundData.correctGuesses}
         />
 
         <Outlined
           color='error'
+          disabled={desisting}
+          onPress={handleDesist}
           text='Desistir da partida'
         />
       </View>

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
 
 import { IMatchHistory, StorageMatchHistory } from '../../shared/services/StorageMatchHistory';
 import { Contained } from '../../shared/components/custom-buttons/Contained';
@@ -18,32 +18,33 @@ export default function Index() {
   const [matchesEnded, setMatchesEnded] = useState<IMatchHistory[]>([]);
 
 
-  useEffect(() => {
-    StorageMatchHistory
-      .getAll()
-      .then(async matches => {
-        const matchesEnded = matches.filter(match => match.status !== 'ongoing');
-        setMatchesEnded(matchesEnded);
+  useFocusEffect(
+    useCallback(() => {
+      StorageMatchHistory
+        .getAll()
+        .then(async matches => {
+          const matchesEnded = matches.filter(match => match.status !== 'ongoing');
+          setMatchesEnded(matchesEnded);
 
-        const matchesOngoing = matches.filter(match => match.status === 'ongoing');
-        const fullMatchesOngoing = await Promise
-          .all(
-            matchesOngoing.map(async (match) => {
-              const fullMatch = await StorageMatch.getById(match.id);
-              if (!fullMatch) return;
+          const matchesOngoing = matches.filter(match => match.status === 'ongoing');
+          const fullMatchesOngoing = await Promise
+            .all(
+              matchesOngoing.map(async (match) => {
+                const fullMatch = await StorageMatch.getById(match.id);
+                if (!fullMatch) return;
 
-              return {
-                ...match,
-                ...fullMatch,
-              };
-            })
-          )
-          .then(matches => matches.filter(Boolean));
+                return {
+                  ...match,
+                  ...fullMatch,
+                };
+              })
+            )
+            .then(matches => matches.filter(Boolean));
 
-        setMatchesOngoing(fullMatchesOngoing as (IMatchHistory & IMatch)[])
-      })
-  }, []);
-
+          setMatchesOngoing(fullMatchesOngoing as (IMatchHistory & IMatch)[])
+        })
+    }, [])
+  );
 
 
   return (
@@ -62,6 +63,7 @@ export default function Index() {
           <Card>
             {matchesOngoing.map((match) => (
               <MatchListItem
+                key={match.id}
                 mode={match.mode}
                 status={match.status}
                 currentRound={match.currentRound}
@@ -83,6 +85,7 @@ export default function Index() {
           <Card>
             {matchesEnded.map((match) => (
               <MatchListItem
+                key={match.id}
                 mode={match.mode}
                 status={match.status}
                 numberOfRounds={match.numberOfRounds}
