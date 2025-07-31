@@ -17,7 +17,7 @@ interface IRound {
   status: 'playing' | 'win' | 'lose' | 'setup';
 }
 
-interface IMatch {
+export interface IMatch {
   id: string;
   mode: 'classic';
   rounds: IRound[];

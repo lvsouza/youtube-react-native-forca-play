@@ -27,6 +27,12 @@ export const StorageMatchHistory = {
 
     const matches = await StorageMatchHistory.getAll();
 
+    const matchesOngoing = matches.filter(match => match.status === 'ongoing');
+    if (matchesOngoing.length > 0) {
+      throw new Error("Match ongoing limit archived");
+    }
+
+
     matches.unshift(matchToInsert);
 
     const matchesAsString = JSON.stringify(matches);
