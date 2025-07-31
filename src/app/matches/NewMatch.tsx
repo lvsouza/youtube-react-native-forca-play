@@ -3,26 +3,53 @@ import { ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as Crypto from 'expo-crypto';
 
+import { StorageMatchHistory } from '../../shared/services/StorageMatchHistory';
 import { Contained } from '../../shared/components/custom-buttons/Contained';
 import { Outlined } from '../../shared/components/custom-buttons/Outlined';
 import { Select } from '../../shared/components/new-match/Select';
-import { StorageMatchHistory } from '../../shared/services/StorageMatchHistory';
+import { StorageMatch } from '../../shared/services/StorageMatch';
 
 
 export default function NewMatch() {
   const router = useRouter()
 
+  const [difficulty, setDifficulty] = useState<"medium" | "easy" | "hard">('medium');
   const [timeForEachRound, setTimeForEachRound] = useState(3);
   const [numberOfRounds, setNumberOfROunds] = useState(3);
-  const [difficulty, setDifficulty] = useState('medium');
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const handleBack = () => {
     router.dismissAll();
   }
 
-  const handleCreateMatch = () => {
-    // StorageMatchHistory.create({})
+  StorageMatchHistory.getAll().then(console.log)
+
+  const handleCreateMatch = async () => {
+    setIsLoading(true);
+
+    const matchId = await StorageMatchHistory.create({
+      numberOfRounds,
+      mode: 'classic',
+      status: 'ongoing',
+    });
+
+    await StorageMatch.create({
+      id: matchId,
+      numberOfRounds,
+      mode: 'classic',
+      currentRound: 1,
+      timeForEachRound,
+      status: 'ongoing',
+      wordDifficulty: difficulty,
+      rounds: [],
+    });
+
+    await StorageMatch.addRoundByMatchId(matchId);
+
+    setIsLoading(false);
+
+    router.replace(`/matches/${matchId}/MatchOngoing`);
   }
 
 
@@ -38,6 +65,7 @@ export default function NewMatch() {
           <Select
             value={difficulty}
             label='Dificuldade'
+            disabled={isLoading}
             onGetItemLabel={(item) => item?.name || ''}
             onSelect={(selectedItem) => setDifficulty(selectedItem.id)}
             onGetSelected={(selectedValue, item) => item.id === selectedValue}
@@ -48,6 +76,7 @@ export default function NewMatch() {
             ]}
           />
           <Select
+            disabled={isLoading}
             label='Número de rodadas'
             value={numberOfRounds}
             onGetItemLabel={(item) => item?.name || ''}
@@ -62,6 +91,7 @@ export default function NewMatch() {
             ]}
           />
           <Select
+            disabled={isLoading}
             label='Tempo por rodada'
             value={timeForEachRound}
             onGetItemLabel={(item) => item?.name || ''}
@@ -80,11 +110,13 @@ export default function NewMatch() {
         <View className='flex-row gap-6 items-center justify-center'>
           <Outlined
             text='Voltar'
+            disabled={isLoading}
             onPress={handleBack}
           />
           <Contained
-            text='Começar'
+            disabled={isLoading}
             onPress={handleCreateMatch}
+            text={isLoading ? 'Aguarde...' : 'Começar'}
           />
         </View>
       </View>

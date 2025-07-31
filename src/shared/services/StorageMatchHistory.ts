@@ -22,7 +22,7 @@ export const StorageMatchHistory = {
 
     return matches;
   },
-  async create(match: Omit<IMatchHistory, 'id'>) {
+  async create(match: Omit<IMatchHistory, 'id'>): Promise<string> {
     const matchToInsert = { ...match, id: Crypto.randomUUID() };
 
     const matches = await StorageMatchHistory.getAll();
@@ -32,6 +32,8 @@ export const StorageMatchHistory = {
     const matchesAsString = JSON.stringify(matches);
 
     await AsyncStorage.setItem('MatchHistory', matchesAsString);
+
+    return matchToInsert.id;
   },
   async update(matchToInsert: IMatchHistory) {
     let matches = await StorageMatchHistory.getAll();

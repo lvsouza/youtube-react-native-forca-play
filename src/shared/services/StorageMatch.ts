@@ -1,4 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { addMinutes } from 'date-fns';
+
+import { StorageGuessedWords } from './StorageGuessedWords';
+import { GetNewWordToGuess } from './GetNewWordToGuess';
 
 
 interface IRound {
@@ -20,7 +24,7 @@ interface IMatch {
   currentRound: number;
   numberOfRounds: number;
   timeForEachRound: number;
-  wordDifficulty: 'normal' | 'easy' | 'hard';
+  wordDifficulty: 'medium' | 'easy' | 'hard';
   status: 'ongoing' | 'lose' | 'win' | 'draw';
 }
 
@@ -48,5 +52,42 @@ export const StorageMatch = {
     const matchAsString = JSON.stringify(matchToUpdate);
 
     await AsyncStorage.setItem(`Match:${matchToUpdate.id}`, matchAsString);
+  },
+
+  async addRoundByMatchId(id: string): Promise<IRound> {
+    const match = await StorageMatch.getById(id);
+    if (!match) throw new Error('Match not found');
+
+    let wordToGuess = await GetNewWordToGuess.getWord(match.wordDifficulty);
+    if (wordToGuess instanceof Error) {
+      await StorageGuessedWords.update('');
+      wordToGuess = await GetNewWordToGuess.getWord(match.wordDifficulty);
+      if (wordToGuess instanceof Error) {
+        throw wordToGuess;
+      }
+    }
+
+    const startTime = Date.now();
+    const endTime = addMinutes(startTime, match.timeForEachRound).getTime();
+
+    const newRound: IRound = {
+      endTime,
+      startTime,
+      wrongGuesses: [],
+      status: 'playing',
+      correctGuesses: [],
+      tip: wordToGuess.tip,
+      secretWord: wordToGuess.word,
+      round: match.rounds.length || 1,
+      maskedWord: wordToGuess.word.split('').map(() => '_'),
+    };
+
+    match.rounds.push(newRound);
+    match.currentRound = match.rounds.length;
+
+
+    await StorageMatch.update(match);
+
+    return newRound;
   },
 };

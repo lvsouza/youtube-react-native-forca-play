@@ -1,25 +1,27 @@
 import { useState } from 'react';
 import { Pressable, Text } from 'react-native';
+
 import { theme } from '../../themes/Theme';
 
 
 type TOutlinedProps = {
   text: string;
+  disabled?: boolean;
   onPress?: () => void;
   color?: 'primary' | 'error';
 }
-export const Outlined = ({ text, color, onPress }: TOutlinedProps) => {
+export const Outlined = ({ text, color, disabled, onPress }: TOutlinedProps) => {
   const [pressed, setPressed] = useState(false);
-
 
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
       className='border-4 bg-paper px-4 py-3 rounded-sm'
       style={{
-        opacity: pressed ? 0.5 : 1,
+        opacity: (pressed || disabled) ? 0.5 : 1,
         borderColor: color === 'primary'
           ? theme.colors.primary
           : color === 'error'

@@ -1,20 +1,21 @@
 import { Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import SelectDropdown from 'react-native-select-dropdown'
 
 import { theme } from '../../themes/Theme';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 type TSelectProps = {
   data: any[];
   label: string;
+  disabled?: boolean;
   value: string | number | null;
   onSelect: (item: any) => void;
   onGetItemLabel: (item: any | undefined) => string | undefined;
   onGetSelected: (value: string | number | null, item: any) => any;
 }
-export const Select = ({ data, label, onSelect, value, onGetSelected, onGetItemLabel }: TSelectProps) => {
+export const Select = ({ data, label, disabled, onSelect, value, onGetSelected, onGetItemLabel }: TSelectProps) => {
   const insets = useSafeAreaInsets();
 
 
@@ -26,6 +27,7 @@ export const Select = ({ data, label, onSelect, value, onGetSelected, onGetItemL
 
       <SelectDropdown
         data={data}
+        disabled={disabled}
         dropdownOverlayColor='transparent'
         onSelect={(selectedItem) => onSelect(selectedItem)}
         defaultValue={data.find(item => onGetSelected(value, item))}
@@ -36,7 +38,10 @@ export const Select = ({ data, label, onSelect, value, onGetSelected, onGetItemL
           backgroundColor: theme.colors.paper,
         }}
         renderButton={(selectedItem) => (
-          <View className='border-4 border-text rounded px-4 py-4 flex-row justify-between items-center'>
+          <View
+            style={{ opacity: disabled ? 0.5 : undefined }}
+            className='border-4 border-text rounded px-4 py-4 flex-row justify-between items-center'
+          >
             <Text className='text-text text-base font-regular'>
               {onGetItemLabel(selectedItem) || 'Selecione'}
             </Text>
