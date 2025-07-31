@@ -11,7 +11,7 @@ Modelagem do async storage
     numberOfRounds: 3,
   },
 
-  // GuessedLetters
+  // GuessedWords
   "abacate,jogo,hospital,..." // String simples
 
   //Match:GameId
