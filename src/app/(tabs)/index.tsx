@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Alert, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import { Contained } from '../../shared/components/custom-buttons/Contained';
 import { MatchListItem } from '../../shared/components/home/MatchListItem';
@@ -28,7 +28,7 @@ export default function Index() {
               currentRound={2}
               status='ongoing'
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchOngoing')}
+              onPress={() => router.push('/matches/123/MatchOngoing')}
             />
           </Card>
         </Section>
@@ -40,7 +40,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -48,7 +48,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -56,7 +56,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -64,14 +64,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -79,7 +79,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -87,7 +87,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -95,14 +95,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -110,7 +110,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -118,7 +118,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -126,14 +126,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -141,7 +141,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -149,7 +149,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -157,14 +157,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -172,7 +172,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -180,7 +180,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -188,14 +188,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -203,7 +203,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -211,7 +211,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -219,14 +219,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -234,7 +234,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -242,7 +242,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -250,14 +250,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -265,7 +265,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -273,7 +273,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -281,14 +281,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -296,7 +296,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -304,7 +304,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -312,14 +312,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -327,7 +327,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -335,7 +335,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -343,14 +343,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -358,7 +358,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -366,7 +366,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -374,14 +374,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -389,7 +389,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -397,7 +397,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -405,14 +405,14 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               status='lose'
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -420,7 +420,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -428,7 +428,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
             <MatchListItem
               divider
@@ -436,7 +436,7 @@ export default function Index() {
               mode='classic'
               currentRound={2}
               numberOfRounds={3}
-              onPress={() => router.push('/matches/MatchDetail')}
+              onPress={() => router.push('/matches/123/MatchDetail')}
             />
           </Card>
         </Section>

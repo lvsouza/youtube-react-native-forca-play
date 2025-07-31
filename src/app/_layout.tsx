@@ -49,23 +49,24 @@ export default function RootLayout() {
       />
 
       <Stack.Screen
-        name='matches/MatchDetail'
-        options={{ title: 'Detalhes' }}
-      />
-      <Stack.Screen
         name='matches/NewMatch'
         options={{ title: 'Nova partida' }}
       />
+
       <Stack.Screen
-        name='matches/MatchOngoing'
+        name='matches/[gameId]/MatchDetail'
+        options={{ title: 'Detalhes' }}
+      />
+      <Stack.Screen
+        name='matches/[gameId]/MatchOngoing'
         options={{ title: 'Partida em andamento' }}
       />
       <Stack.Screen
-        name='matches/NewRound'
+        name='matches/[gameId]/NewRound'
         options={{ title: 'Nova rodada' }}
       />
       <Stack.Screen
-        name='matches/MatchEnded'
+        name='matches/[gameId]/MatchEnded'
         options={{ title: 'Partida encerrada' }}
       />
     </Stack>

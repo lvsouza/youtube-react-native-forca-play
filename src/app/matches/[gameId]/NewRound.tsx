@@ -1,10 +1,11 @@
 import { Image, ScrollView, Text, View } from 'react-native';
-import { ForcaImages } from '../../shared/assets';
-import { Section } from '../../shared/components/Section';
-import { Card } from '../../shared/components/Card';
-import { RoundListItem } from '../../shared/components/RoundListItem';
-import { Outlined } from '../../shared/components/custom-buttons/Outlined';
-import { Contained } from '../../shared/components/custom-buttons/Contained';
+
+import { Contained } from '../../../shared/components/custom-buttons/Contained';
+import { Outlined } from '../../../shared/components/custom-buttons/Outlined';
+import { RoundListItem } from '../../../shared/components/RoundListItem';
+import { Section } from '../../../shared/components/Section';
+import { Card } from '../../../shared/components/Card';
+import { ForcaImages } from '../../../shared/assets';
 
 
 export default function NewRound() {

@@ -1,8 +1,8 @@
 import { ScrollView, Text, View } from 'react-native';
 
-import { RoundListItem } from '../../shared/components/RoundListItem';
-import { Section } from '../../shared/components/Section';
-import { Card } from '../../shared/components/Card';
+import { RoundListItem } from '../../../shared/components/RoundListItem';
+import { Section } from '../../../shared/components/Section';
+import { Card } from '../../../shared/components/Card';
 
 
 export default function MatchDetail() {

@@ -1,8 +1,8 @@
 import { Image, ScrollView, Text, View } from 'react-native';
 
-import { Outlined } from '../../shared/components/custom-buttons/Outlined';
-import { Keyboard } from '../../shared/components/match-ongoing/Keyboard';
-import { ForcaImages } from '../../shared/assets';
+import { Outlined } from '../../../shared/components/custom-buttons/Outlined';
+import { Keyboard } from '../../../shared/components/match-ongoing/Keyboard';
+import { ForcaImages } from '../../../shared/assets';
 
 
 export default function MatchOngoing() {
