@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from 'expo-crypto';
 
 
-interface IMatchHistory {
+export interface IMatchHistory {
   id: string,
   mode: 'classic',
   status: 'ongoing' | 'lose' | 'win' | 'draw',
