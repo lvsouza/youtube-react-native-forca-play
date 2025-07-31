@@ -6,6 +6,7 @@ import * as Crypto from 'expo-crypto';
 import { Contained } from '../../shared/components/custom-buttons/Contained';
 import { Outlined } from '../../shared/components/custom-buttons/Outlined';
 import { Select } from '../../shared/components/new-match/Select';
+import { StorageMatchHistory } from '../../shared/services/StorageMatchHistory';
 
 
 export default function NewMatch() {
@@ -21,7 +22,7 @@ export default function NewMatch() {
   }
 
   const handleCreateMatch = () => {
-    console.log(Crypto.randomUUID());
+    // StorageMatchHistory.create({})
   }
 
 
