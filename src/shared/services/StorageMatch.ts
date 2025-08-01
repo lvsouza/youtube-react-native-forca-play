@@ -79,7 +79,7 @@ export const StorageMatch = {
       tip: wordToGuess.tip,
       secretWord: wordToGuess.word,
       round: match.rounds.length || 1,
-      maskedWord: wordToGuess.word.split('').map(() => '_'),
+      maskedWord: wordToGuess.word.split('').map((letter) => letter === '-' ? '-' : '_'),
     };
 
     match.rounds.push(newRound);
@@ -88,6 +88,65 @@ export const StorageMatch = {
 
     await StorageMatch.update(match);
 
+    await StorageGuessedWords.addWord(wordToGuess.word);
+
     return newRound;
+  },
+  async guessALetterByMatchId(matchId: string, letter: string) {
+    const match = await StorageMatch.getById(matchId);
+    if (!match) return 'match-not-found' as const;
+    if (match.status !== 'ongoing') return 'match-ended' as const;
+
+    const currentRound = match.rounds.find(round => round.round === match.currentRound);
+    if (!currentRound) return 'round-not-found' as const;
+
+    if (currentRound.status !== 'playing') return 'round-ended' as const;
+
+    if (currentRound.endTime < Date.now()) {
+      currentRound.status = 'lose';
+      await StorageMatch.update(match);
+      return 'round-time-expired' as const;
+    }
+
+
+    const normalizedSecretWord = currentRound
+      .secretWord
+      .split('')
+      .map(letter => letter
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/æ/g, 'ae')
+        .replace(/œ/g, 'oe')
+        .replace(/ß/g, 'ss')
+        .replace(/ø/g, 'o')
+        .replace(/ł/g, 'l')
+      );
+
+    const isCorrectGuess = normalizedSecretWord.includes(letter);
+    if (!isCorrectGuess) {
+      currentRound.wrongGuesses.push(letter);
+    } else {
+      currentRound.correctGuesses.push(letter);
+
+      const originalSecretWordAsArray = currentRound.secretWord.split('');
+
+      currentRound.maskedWord = normalizedSecretWord.map((normalizedLetter, index) => {
+        if (currentRound.correctGuesses.includes(normalizedLetter)) return originalSecretWordAsArray[index];
+        return normalizedLetter === '-' ? '-' : '_';
+      });
+    }
+
+    if (currentRound.wrongGuesses.length >= 7) {
+      currentRound.status = 'lose';
+      await StorageMatch.update(match);
+      return 'round-ended' as const;
+    } else if (!currentRound.maskedWord.includes('_')) {
+      currentRound.status = 'win';
+      await StorageMatch.update(match);
+      return 'round-ended' as const;
+    } else {
+      await StorageMatch.update(match);
+      return currentRound;
+    }
   },
 };

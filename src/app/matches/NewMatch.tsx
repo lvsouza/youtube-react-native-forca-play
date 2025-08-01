@@ -23,7 +23,6 @@ export default function NewMatch() {
     router.dismissAll();
   }
 
-  StorageMatchHistory.getAll().then(console.log)
 
   const handleCreateMatch = async () => {
     setIsLoading(true);

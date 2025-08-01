@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Alert, Image, ScrollView, Text, View } from 'react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { StorageMatchHistory } from '../../../shared/services/StorageMatchHistory';
 import { Outlined } from '../../../shared/components/custom-buttons/Outlined';
@@ -25,6 +25,18 @@ export default function MatchOngoing() {
       .getById(gameId)
       .then(match => {
         if (!match) return;
+
+        if (match.status !== 'ongoing') {
+          router.replace(`/matches/${match.id}/MatchEnded`);
+          return;
+        }
+
+        const currentRound = match.rounds.find(round => round.round === match.currentRound);
+        if (currentRound?.status !== 'playing') {
+          router.replace(`/matches/${match.id}/NewRound`);
+          return;
+        }
+
         setMatch(match);
       });
   }, [gameId]);
@@ -64,6 +76,40 @@ export default function MatchOngoing() {
     );
   }
 
+  const handleGuessALetter = async (letter: string) => {
+    if (!match?.id) return;
+
+    const result = await StorageMatch.guessALetterByMatchId(match.id, letter);
+
+    switch (result) {
+      case 'match-not-found':
+        router.back();
+        break;
+      case 'match-ended':
+        router.replace(`/matches/${match.id}/MatchEnded`);
+        break;
+      case 'round-not-found':
+      case 'round-ended':
+      case 'round-time-expired':
+        router.replace(`/matches/${match.id}/NewRound`);
+        break;
+
+      default:
+        setMatch(oldMatch => {
+          if (!oldMatch) return oldMatch;
+
+          return {
+            ...oldMatch,
+            rounds: [
+              ...oldMatch.rounds.filter(oldRound => oldRound.round !== result.round),
+              result,
+            ],
+          };
+        });
+        break;
+    }
+  };
+
 
   if (!match || !currentRoundData) return (
     <View className='items-center justify-center flex-1'>
@@ -76,8 +122,6 @@ export default function MatchOngoing() {
   return (
     <ScrollView className='flex-1 p-2 pt-6'>
       <View className='gap-6 items-center'>
-
-
         <Text className='text-text font-regular text-xl underline'>
           {currentRoundData.tip}
         </Text>
@@ -99,7 +143,7 @@ export default function MatchOngoing() {
 
         <Keyboard
           disabled={desisting}
-          onSelect={letter => console.log(letter)}
+          onSelect={handleGuessALetter}
           wrongGuesses={currentRoundData.wrongGuesses}
           correctGuesses={currentRoundData.correctGuesses}
         />
