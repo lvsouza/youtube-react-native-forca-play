@@ -6,8 +6,8 @@ type TRoundListItemProps = {
   word: string;
   divider?: boolean;
   wrongLetters: string[];
-  status: 'win' | 'lose';
   correctLetters: string[];
+  status: 'win' | 'lose' | 'playing' | 'setup';
 }
 export const RoundListItem = ({ divider, correctLetters, status, tip, word, wrongLetters }: TRoundListItemProps) => {
 
@@ -17,7 +17,7 @@ export const RoundListItem = ({ divider, correctLetters, status, tip, word, wron
       className='px-2 py-1 border-background'
     >
       <View className='flex-row justify-between items-center mb-2'>
-        <Text className='text-text font-bold text-lg'>
+        <Text className='text-text font-bold text-lg uppercase'>
           {word}
         </Text>
 

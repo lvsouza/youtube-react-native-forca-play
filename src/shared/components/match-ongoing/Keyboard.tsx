@@ -16,9 +16,9 @@ export const Keyboard = ({ correctGuesses, onSelect, wrongGuesses, disabled }: T
         {['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'].map((letter) => (
           <TouchableOpacity
             key={letter}
-            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
+            disabled={disabled || correctGuesses.includes(letter) || wrongGuesses.includes(letter)}
             style={{
               opacity: disabled ? 0.5 : undefined,
               backgroundColor: correctGuesses.includes(letter)
@@ -38,9 +38,9 @@ export const Keyboard = ({ correctGuesses, onSelect, wrongGuesses, disabled }: T
         {['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'].map((letter) => (
           <TouchableOpacity
             key={letter}
-            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
+            disabled={disabled || correctGuesses.includes(letter) || wrongGuesses.includes(letter)}
             style={{
               opacity: disabled ? 0.5 : undefined,
               backgroundColor: correctGuesses.includes(letter)
@@ -60,9 +60,9 @@ export const Keyboard = ({ correctGuesses, onSelect, wrongGuesses, disabled }: T
         {['z', 'x', 'c', 'v', 'b', 'n', 'm'].map((letter) => (
           <TouchableOpacity
             key={letter}
-            disabled={disabled}
             onPress={() => onSelect(letter)}
             className='h-9 w-9 bg-paper rounded-sm justify-center'
+            disabled={disabled || correctGuesses.includes(letter) || wrongGuesses.includes(letter)}
             style={{
               opacity: disabled ? 0.5 : undefined,
               backgroundColor: correctGuesses.includes(letter)

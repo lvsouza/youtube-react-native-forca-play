@@ -93,6 +93,8 @@ export default function MatchOngoing() {
       case 'round-time-expired':
         router.replace(`/matches/${match.id}/NewRound`);
         break;
+      case 'letter-already-used':
+        break;
 
       default:
         setMatch(oldMatch => {
@@ -134,7 +136,7 @@ export default function MatchOngoing() {
         <View className='flex-row flex-wrap gap-2 items-center justify-center'>
           {currentRoundData.maskedWord.map((letter, index) => (
             <View key={index} className='border-b-4 border-text h-9 w-9'>
-              <Text className='text-text font-bold text-2xl text-center'>
+              <Text className='text-text font-bold text-2xl text-center uppercase'>
                 {letter === '_' ? '' : letter}
               </Text>
             </View>

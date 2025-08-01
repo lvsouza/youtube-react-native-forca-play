@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { addMinutes } from 'date-fns';
 
 import { StorageGuessedWords } from './StorageGuessedWords';
+import { StorageMatchHistory } from './StorageMatchHistory';
 import { GetNewWordToGuess } from './GetNewWordToGuess';
 
 
@@ -49,6 +50,35 @@ export const StorageMatch = {
     let match = await StorageMatch.getById(matchToUpdate.id);
     if (!match) return;
 
+    if (matchToUpdate.status === 'ongoing') {
+      const finalizedRounds = matchToUpdate
+        .rounds
+        .filter(round => ['win', 'lose'].includes(round.status))
+
+      if (matchToUpdate.numberOfRounds === finalizedRounds.length) {
+        const newStatus = matchToUpdate.rounds.reduce((previous, current) => {
+          if (current.status === 'lose') return previous - 1;
+          if (current.status === 'win') return previous + 1;
+          return previous;
+        }, 0);
+
+        matchToUpdate.status = newStatus === 0
+          ? 'draw'
+          : newStatus > 0
+            ? 'win'
+            : newStatus < 0
+              ? 'lose'
+              : 'ongoing';
+
+        await StorageMatchHistory.update({
+          id: matchToUpdate.id,
+          mode: matchToUpdate.mode,
+          status: matchToUpdate.status,
+          numberOfRounds: matchToUpdate.numberOfRounds,
+        });
+      }
+    }
+
     const matchAsString = JSON.stringify(matchToUpdate);
 
     await AsyncStorage.setItem(`Match:${matchToUpdate.id}`, matchAsString);
@@ -78,7 +108,7 @@ export const StorageMatch = {
       correctGuesses: [],
       tip: wordToGuess.tip,
       secretWord: wordToGuess.word,
-      round: match.rounds.length || 1,
+      round: (match.rounds.length + 1),
       maskedWord: wordToGuess.word.split('').map((letter) => letter === '-' ? '-' : '_'),
     };
 
@@ -106,6 +136,10 @@ export const StorageMatch = {
       currentRound.status = 'lose';
       await StorageMatch.update(match);
       return 'round-time-expired' as const;
+    }
+
+    if ([...currentRound.correctGuesses, ...currentRound.wrongGuesses].includes(letter)) {
+      return 'letter-already-used' as const;
     }
 
 
