@@ -108,7 +108,7 @@ export default function NewRound() {
               tip={currentRoundData.tip}
               key={currentRoundData.round}
               status={currentRoundData.status}
-              word={currentRoundData.maskedWord.join('')}
+              word={currentRoundData.maskedWord.join(' ')}
               wrongLetters={currentRoundData.wrongGuesses}
               correctLetters={currentRoundData.correctGuesses}
             />

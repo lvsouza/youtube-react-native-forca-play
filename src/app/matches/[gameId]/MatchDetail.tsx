@@ -1,11 +1,39 @@
+import { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 
+import { IMatch, StorageMatch } from '../../../shared/services/StorageMatch';
 import { RoundListItem } from '../../../shared/components/RoundListItem';
 import { Section } from '../../../shared/components/Section';
 import { Card } from '../../../shared/components/Card';
 
 
 export default function MatchDetail() {
+  const { gameId } = useLocalSearchParams();
+
+
+  const [match, setMatch] = useState<IMatch>();
+
+
+  useEffect(() => {
+    if (!gameId || Array.isArray(gameId)) return;
+
+    StorageMatch
+      .getById(gameId)
+      .then(match => {
+        if (!match) return;
+        setMatch(match);
+      });
+  }, [gameId]);
+
+
+  if (!match) return (
+    <View className='items-center justify-center flex-1'>
+      <Text className='text-text font-regular text-lg'>
+        Carregando...
+      </Text>
+    </View>
+  );
 
   return (
     <ScrollView className='flex-1 p-2'>
@@ -14,9 +42,15 @@ export default function MatchDetail() {
           title={
             <Text className='text-text font-base font-regular'>
               Modo clássico (
-              <Text className='font-bold text-correct'>Vitoria</Text>
-              {/* <Text className='font-bold text-wrong'>Derrota</Text>
-              <Text className='font-bold text-alert'>Empate</Text> */}
+              {match.status === 'win' && (
+                <Text className='font-bold text-correct'>Vitória</Text>
+              )}
+              {match.status === 'lose' && (
+                <Text className='font-bold text-wrong'>Derrota</Text>
+              )}
+              {match.status === 'draw' && (
+                <Text className='font-bold text-alert'>Empate</Text>
+              )}
               )
             </Text>
           }
@@ -29,7 +63,7 @@ export default function MatchDetail() {
                   Rodadas
                 </Text>
                 <Text className='text-text text-center font-bold text-lg'>
-                  3
+                  {match.numberOfRounds}
                 </Text>
               </Card>
               <Card className='flex-1 aspect-square justify-center items-center gap-1'>
@@ -37,7 +71,7 @@ export default function MatchDetail() {
                   Vitórias
                 </Text>
                 <Text className='text-text text-center font-bold text-lg'>
-                  2
+                  {match.rounds.filter(round => round.status === 'win').length}
                 </Text>
               </Card>
               <Card className='flex-1 aspect-square justify-center items-center gap-1'>
@@ -45,7 +79,7 @@ export default function MatchDetail() {
                   Derrotas
                 </Text>
                 <Text className='text-text text-center font-bold text-lg'>
-                  1
+                  {match.rounds.filter(round => round.status === 'lose').length}
                 </Text>
               </Card>
             </View>
@@ -56,7 +90,9 @@ export default function MatchDetail() {
                   Dificuldade
                 </Text>
                 <Text className='text-text text-center font-bold text-lg'>
-                  Média
+                  {match.wordDifficulty === 'easy' && 'Fácil'}
+                  {match.wordDifficulty === 'medium' && 'Média'}
+                  {match.wordDifficulty === 'hard' && 'Difícil'}
                 </Text>
               </Card>
               <Card className='flex-1 aspect-square justify-center items-center gap-1'>
@@ -64,7 +100,9 @@ export default function MatchDetail() {
                   Duração da rodada
                 </Text>
                 <Text className='text-text text-center font-bold text-lg'>
-                  3 min.
+                  {match.timeForEachRound > 60 && (`${match.timeForEachRound / 60} horas`)}
+                  {match.timeForEachRound === 60 && (`1 hora`)}
+                  {match.timeForEachRound < 60 && (`${match.timeForEachRound} min.`)}
                 </Text>
               </Card>
               <View className='flex-1 p-4 aspect-square' />
@@ -74,349 +112,17 @@ export default function MatchDetail() {
 
         <Section title='Rodadas'>
           <Card>
-            <RoundListItem
-              status='win'
-              word='Abacate'
-              tip='Fruta com casca verde'
-              wrongLetters={['e', 'i', 'o', 'u', 'g']}
-              correctLetters={['a', 'b', 'c', 't', 'e']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
-            <RoundListItem
-              divider
-              word='Jogo'
-              status='win'
-              tip='Algo para se divertir'
-              wrongLetters={['a', 'e', 'i']}
-              correctLetters={['j', 'o', 'g']}
-            />
-            <RoundListItem
-              divider
-              status='lose'
-              word='Janela'
-              tip='Pode estar aberto ou fechado'
-              correctLetters={['e', 'a']}
-              wrongLetters={['b', 'g', 'k', 'p', 't', 'r', 'q']}
-            />
+            {match.rounds.map((round, index) => (
+              <RoundListItem
+                tip={round.tip}
+                key={round.round}
+                divider={index > 0}
+                status={round.status}
+                word={round.maskedWord.join(' ')}
+                wrongLetters={round.wrongGuesses}
+                correctLetters={round.correctGuesses}
+              />
+            ))}
           </Card>
         </Section>
       </View>
