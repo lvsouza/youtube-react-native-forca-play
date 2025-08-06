@@ -1,19 +1,24 @@
 {
   "expo": {
-    "name": "forca-play",
+    "name": "Jogo da forca - ForcaPlay",
+    "description": "Jogue Forca e teste seu vocabulário com desafios divertidos!",
     "slug": "forca-play",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "scheme": "forcaplay",
     "newArchEnabled": true,
+    "platforms": ["ios", "android"],
+    "primaryColor": "#FFE100",
+    "backgroundColor": "#454545",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#FFE100"
     },
     "ios": {
+      "buildNumber": "1",
       "supportsTablet": true,
       "icon": {
         "dark": "./assets/ios-dark.png",
@@ -22,6 +27,7 @@
       }
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFE100"
