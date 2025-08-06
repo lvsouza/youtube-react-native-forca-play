@@ -26,7 +26,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFE100"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.lvsouzadev.forcaplay"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -35,6 +36,12 @@
     "plugins": [
       "expo-font",
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0e15c5eb-010f-4a03-a42a-52dee50ab11d"
+      }
+    }
   }
 }
