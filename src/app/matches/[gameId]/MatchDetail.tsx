@@ -36,8 +36,8 @@ export default function MatchDetail() {
   );
 
   return (
-    <ScrollView className='flex-1 p-2'>
-      <View className='gap-2'>
+    <ScrollView className='flex-1'>
+      <View className='gap-2 p-2 max-w-lg self-center w-full'>
         <Section
           title={
             <Text className='text-text font-base font-regular'>

@@ -49,7 +49,7 @@ export default function Index() {
 
   return (
     <ScrollView>
-      <View className='flex-1 px-2 gap-6'>
+      <View className='flex-1 px-2 gap-6 max-w-lg self-center w-full'>
         <View className='items-center'>
           <Contained
             text='Nova partida'

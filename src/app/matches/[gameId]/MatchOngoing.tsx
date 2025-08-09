@@ -122,8 +122,8 @@ export default function MatchOngoing() {
   );
 
   return (
-    <ScrollView className='flex-1 p-2 pt-6'>
-      <View className='gap-6 items-center'>
+    <ScrollView className='flex-1'>
+      <View className='gap-6 items-center p-2 pt-6 max-w-lg self-center w-full'>
         <Text className='text-text font-regular text-xl underline'>
           {currentRoundData.tip}
         </Text>
