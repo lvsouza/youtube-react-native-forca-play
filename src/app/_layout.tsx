@@ -29,46 +29,14 @@ export default function RootLayout() {
   return (
     <Stack
       screenOptions={{
-        header: CustomHeader,
-        headerTintColor: theme.colors.text,
+        headerShown: false,
         contentStyle: {
           backgroundColor: theme.colors.background,
         },
-        headerStyle: {
-          backgroundColor: theme.colors.paper,
-        },
-        headerTitleStyle: {
-          color: theme.colors.text,
-          fontFamily: theme.fonts.family.bold,
-        },
       }}
     >
-      <Stack.Screen
-        name='(tabs)'
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name='matches/NewMatch'
-        options={{ title: 'Nova partida' }}
-      />
-
-      <Stack.Screen
-        name='matches/[gameId]/MatchDetail'
-        options={{ title: 'Detalhes' }}
-      />
-      <Stack.Screen
-        name='matches/[gameId]/MatchOngoing'
-        options={{ title: 'Partida em andamento' }}
-      />
-      <Stack.Screen
-        name='matches/[gameId]/NewRound'
-        options={{ title: 'Nova rodada' }}
-      />
-      <Stack.Screen
-        name='matches/[gameId]/MatchEnded'
-        options={{ title: 'Partida encerrada' }}
-      />
+      <Stack.Screen name='(tabs)' />
+      <Stack.Screen name='matches' />
     </Stack>
   );
 }

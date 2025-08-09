@@ -54,7 +54,7 @@ export default function NewMatch() {
 
   return (
     <ScrollView className='flex-1'>
-      <View className='gap-6 pt-6 p-2 max-w-lg self-center w-full'>
+      <View className='gap-6 pt-6 pb-6 p-2 max-w-lg self-center w-full'>
 
         <Text className='text-text font-regular text-base text-center'>
           Modo clássico offline

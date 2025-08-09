@@ -40,7 +40,7 @@ export default function MatchEnded() {
 
   return (
     <ScrollView className='flex-1'>
-      <View className='gap-6 p-2 pt-6 max-w-lg self-center w-full'>
+      <View className='gap-6 p-2 pt-6 pb-6 max-w-lg self-center w-full'>
 
         {match.status === 'win' && (
           <Text className='text-correct font-bold text-lg text-center'>

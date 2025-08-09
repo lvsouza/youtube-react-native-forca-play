@@ -23,7 +23,8 @@ export default function Layout() {
         <TabList
           style={{
             gap: 16,
-            marginBottom: 24,
+            marginTop: 8,
+            marginBottom: 8,
             paddingVertical: 8,
             paddingHorizontal: 16,
             marginHorizontal: 'auto',
@@ -45,7 +46,7 @@ export default function Layout() {
 
         <TabSlot />
       </Tabs>
-    </View >
+    </View>
   );
 }
 

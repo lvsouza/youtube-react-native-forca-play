@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <ScrollView>
-      <View className='gap-6 px-2 max-w-lg self-center w-full'>
+      <View className='flex-1 pt-6 pb-6 p-2 gap-6 max-w-lg self-center w-full'>
         <Section title="Sobre o ForcaPlay">
           <Card>
             <View className='gap-5'>
