@@ -9,7 +9,10 @@
     "userInterfaceStyle": "dark",
     "scheme": "forcaplay",
     "newArchEnabled": true,
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "primaryColor": "#FFE100",
     "backgroundColor": "#454545",
     "splash": {
@@ -24,10 +27,11 @@
         "dark": "./assets/ios-dark.png",
         "light": "./assets/ios-light.png",
         "tinted": "./assets/ios-tinted.png"
-      }
+      },
+      "bundleIdentifier": "com.lvsouzadev.forcaplay"
     },
     "android": {
-      "versionCode": 2,
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFE100"
