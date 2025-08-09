@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, Image, ScrollView, Text, View } from 'react-native';
+import { Alert, Image, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { StorageMatchHistory } from '../../../shared/services/StorageMatchHistory';
@@ -10,6 +10,7 @@ import { ForcaImages } from '../../../shared/assets';
 
 
 export default function MatchOngoing() {
+  const { height, width } = useWindowDimensions();
   const { gameId } = useLocalSearchParams();
   const router = useRouter();
 
@@ -129,11 +130,14 @@ export default function MatchOngoing() {
         </Text>
 
         <Image
-          className='w-60 h-60'
+          className='aspect-square'
           source={ForcaImages[(currentRoundData.wrongGuesses.length + 1) as 1]}
+          style={{
+            height: (width > 768 && height > 800) ? 300 : 240
+          }}
         />
 
-        <View className='flex-row flex-wrap gap-2 items-center justify-center'>
+        <View className='flex-row flex-wrap gap-2 items-center justify-center sm:bg-white'>
           {currentRoundData.maskedWord.map((letter, index) => (
             <View key={index} className='border-b-4 border-text h-9 w-9'>
               <Text className='text-text font-bold text-2xl text-center uppercase'>

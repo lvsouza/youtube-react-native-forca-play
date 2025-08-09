@@ -14,12 +14,12 @@ export const GetNewWordToGuess = {
     const wordsGuessed = await StorageGuessedWords.getWords();
 
     const words = difficulty === 'easy'
-      ? easyWords
+      ? easyWords.sort(() => Math.random() - 0.5)
       : difficulty === 'medium'
-        ? normalWords
+        ? normalWords.sort(() => Math.random() - 0.5)
         : difficulty === 'hard'
-          ? hardWords
-          : [...easyWords, ...normalWords, ...hardWords];
+          ? hardWords.sort(() => Math.random() - 0.5)
+          : [...easyWords, ...normalWords, ...hardWords].sort(() => Math.random() - 0.5);
 
 
     for (const word of words) {
@@ -27,7 +27,7 @@ export const GetNewWordToGuess = {
       return word;
     }
 
-    for (const word of [...easyWords, ...normalWords, ...hardWords]) {
+    for (const word of [...easyWords, ...normalWords, ...hardWords].sort(() => Math.random() - 0.5)) {
       if (wordsGuessed.includes(word.word)) continue;
       return word;
     }
