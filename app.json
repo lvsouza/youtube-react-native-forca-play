@@ -45,7 +45,13 @@
     },
     "plugins": [
       "expo-font",
-      "expo-router"
+      "expo-router",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-xxxxxxxx~xxxxxxxx"
+        }
+      ]
     ],
     "extra": {
       "router": {},
