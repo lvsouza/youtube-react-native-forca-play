@@ -57,7 +57,7 @@ export default function Layout() {
 
       <BannerAd
         unitId={bannerAdUnitId}
-        size={BannerAdSize.FULL_BANNER}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
       />
     </View>
   );
