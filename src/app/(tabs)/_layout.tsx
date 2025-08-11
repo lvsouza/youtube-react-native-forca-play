@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Tabs, TabSlot, TabList, TabTrigger, TabTriggerSlotProps } from 'expo-router/ui';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Pressable, Text, View } from 'react-native';
 
@@ -8,6 +9,13 @@ import { theme } from '../../shared/themes/Theme';
 
 export default function Layout() {
   const insets = useSafeAreaInsets();
+
+
+  const bannerAdUnitId = useMemo(() => {
+    if (__DEV__) return TestIds.BANNER;
+    return '';
+  }, []);
+
 
   return (
     <View
@@ -46,6 +54,11 @@ export default function Layout() {
 
         <TabSlot />
       </Tabs>
+
+      <BannerAd
+        unitId={bannerAdUnitId}
+        size={BannerAdSize.FULL_BANNER}
+      />
     </View>
   );
 }

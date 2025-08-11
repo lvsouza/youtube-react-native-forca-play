@@ -1,5 +1,7 @@
-import { View } from 'react-native';
+import { useMemo } from 'react';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 import { Stack } from 'expo-router';
 
 import { CustomHeader } from '../../shared/components/CustomHeader';
@@ -8,6 +10,13 @@ import { CustomHeader } from '../../shared/components/CustomHeader';
 
 export default function Layout() {
   const insets = useSafeAreaInsets();
+
+
+  const bannerAdUnitId = useMemo(() => {
+    if (__DEV__) return TestIds.BANNER;
+    return '';
+  }, []);
+
 
   return (
     <View
@@ -46,6 +55,11 @@ export default function Layout() {
           options={{ title: 'Partida encerrada' }}
         />
       </Stack>
+
+      <BannerAd
+        unitId={bannerAdUnitId}
+        size={BannerAdSize.FULL_BANNER}
+      />
     </View>
   );
 }
